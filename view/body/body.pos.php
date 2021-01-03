@@ -21,7 +21,7 @@
                     {  
                         echo '
                          <div class="col-lg-3 col-md-6 col-sm-6 col-12" >
-                            <button onclick="func_addcart('.$row['id'].');" type="button" class="btn btn-dark card card-statistic-1" style="height:90%;">
+                            <button onclick="func_addcart('.$row['id'].', '.$_SESSION["orderid"].');" type="button" class="btn btn-dark card card-statistic-1" style="height:90%;">
                                 <div class="card-icon bg-primary">
                                     <img src="'.$row['photo'].'" height="100px;" width="200px;">
                                 </div>
@@ -45,7 +45,7 @@
         </div>
 
   <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog"  data-backdrop="static">
+  <div class="modal fade" id="modalReloadDuration" role="dialog"  data-backdrop="static">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -77,9 +77,32 @@
   </div>
 
         <script type="text/javascript">
-            function func_addcart()
+            function func_addcart(id, orderid)
             {
-               
-                $("#myModal").modal();
+              debugger;
+              $.ajax({
+                  type: "POST",
+                  url: "class/api.function.php",
+                  data:
+                  {
+                      id : 'GetProduct',
+                      data  : id
+                  },
+                  success: function(response)
+                  {
+                    var a_response = JSON.parse(response);
+                    if (response !="[]")
+                      {
+                        document.getElementById("ProductID").value = a_response[0].productid; 
+                        document.getElementById("OrderID").value =  orderid; 
+                        $("#modalReloadDuration").modal();
+                      }
+                      else
+                      {
+                        alert("Record not found!");
+                      }
+                  }
+              });
+               // $("#modalReloadDuration").modal();
             }
         </script>

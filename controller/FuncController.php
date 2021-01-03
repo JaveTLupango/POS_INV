@@ -71,4 +71,27 @@ class Func_Controller
 		 return $prefix . substr(round(microtime(true) * 1000), 8);
 		}
 	}	
+
+	function ordervalidation_id($conn, $select, $insert)
+	{
+		try
+		{
+			$sql = "Select orderid from orders WHERE status=1 AND sold=1";
+			$select_res = $select->fn_SelectAll($conn,$sql); //$conn->exec($sql); 
+			if(json_encode($select_res) =="[]")
+			{
+				$ret = $insert->insert_orderID($conn);	
+				return $ret;
+			}
+			else
+			{
+				 $row = $select_res->fetch();
+				 return  $row["orderid"];
+			}
+		}catch(Exception $err)
+		{
+			return $err;
+		}	
+	}
 }
+

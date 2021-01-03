@@ -135,4 +135,25 @@ class Insert_Controller
 			return $e->getMessage();
 		}
 	}
+
+	function insert_orderID($conn)
+	{
+		try
+		{
+			$now = new DateTime();
+			$dt = $now->format('Y-m-d H:i:s');
+			$dt1 = $now->format('m-Y-d H:i:s');
+			$dt2 = $now->format('d-m-Y H:i:s');
+			$dttime = $now->format('Y-m-d H:i:s');
+			$id = round($dt).round($dt1).round($dt2).round(microtime(true));
+			$sql = "INSERT INTO orders(orderid, tdt,status,sold) 
+					VALUES('$id', '$dttime','1','1')";
+			$conn->exec($sql);
+			return $id;
+
+		}catch(Exception $e)
+		{
+			return $e->getMessage();
+		}
+	}
 }

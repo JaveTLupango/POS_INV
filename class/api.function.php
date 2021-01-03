@@ -40,6 +40,11 @@ else
 			$_id = $_POST['data'];
 			echo $c_Func->_duration($_id);
 		}
+		else if ($id == "GetProduct")
+		{
+			$_id = $_POST['data'];
+			echo $c_Select->fn_SelectAll_RetJSON($conn, "SELECT productid, price FROM product WHERE id='$_id'");
+		}
 		else
 		{
 			echo "[]";

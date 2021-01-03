@@ -17,7 +17,10 @@ $c_Select = new Select_Controller(); // Select controller declaration
 $c_Func = new Func_Controller(); // Select controller declaration
 $c_email = new Email_Controller(); // Delete controller declarati0n
 $conn = $c_con->f_connection();
-    include 'view/partial/head.pos.php';
+
+$orderid = $c_Func->ordervalidation_id($conn, $c_Select, $c_InsertControl);
+$_SESSION["orderid"] = $orderid;
+include 'view/partial/head.pos.php';
 
     echo '<body class="layout-3">
             <div class="page-loader-wrapper">
