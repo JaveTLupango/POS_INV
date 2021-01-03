@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2021 at 11:47 AM
+-- Generation Time: Jan 03, 2021 at 03:21 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -47,7 +47,7 @@ CREATE TABLE `orderdetails` (
 --
 
 CREATE TABLE `orders` (
-  `id` int(11) DEFAULT NULL,
+  `id` int(11) NOT NULL,
   `orderid` varchar(50) NOT NULL,
   `tdt` date NOT NULL,
   `udt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -55,6 +55,13 @@ CREATE TABLE `orders` (
   `status` int(11) NOT NULL,
   `sold` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `orderid`, `tdt`, `udt`, `uid`, `status`, `sold`) VALUES
+(1, '2021131609683071', '2021-01-03', '2021-01-03 14:11:10', '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -184,6 +191,12 @@ CREATE TABLE `usersession` (
 --
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
@@ -216,6 +229,12 @@ ALTER TABLE `usersession`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `product`
