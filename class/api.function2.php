@@ -86,9 +86,9 @@ else
 		}
 		else if ($id == "addordercart")
 		{
-			$_id1 = $_POST['orderid'];
-			$_id2 = $_POST['productid'];
-			$_id3 = $_POST['qty'];
+			$_id1 = $_POST['data1'];
+			$_id2 = $_POST['data2'];
+			$_id3 = $_POST['data3'];
 			$now = new DateTime();
             $dt = $now->format('Y-m-d H:i:s');
 

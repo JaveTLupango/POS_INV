@@ -68,7 +68,7 @@
               <input type="number" class="form-control" id="qtyoforder" name="qtyoforder">    
             </div>
         </div>        
-        <button type="submit" class="btn btn-success" onclick="funcAddOrderCart();" style="float:left">Add order</button>
+        <button type="submit" class="btn btn-success" onclick="func_AddOrderCart()" style="float:left">Add order</button>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
@@ -104,23 +104,22 @@
                   }
               });
                // $("#modalReloadDuration").modal();
-            }
-
-            function funcAddOrderCart()
+            }            
+            
+            function func_AddOrderCart(id)
             {
               debugger;
               var orderid = document.getElementById("OrderID").value; 
               var productid = document.getElementById("ProductID").value; 
               var qty = document.getElementById("qtyoforder").value; 
-              //alert(qty);
               $.ajax({
                       type:"POST",
-                      url : "",
+                      url : "class/api.function2.php",
                       data:{
                         id = "addordercart",
-                        orderid : orderid,
-                        productid: productid,
-                        qty: qty
+                        data1 : orderid,
+                        data2: productid,
+                        data3: qty
                       },
                       success: function(resp)
                       {
@@ -128,4 +127,5 @@
                       }
               });
             }
-        </script>
+
+            </script>
