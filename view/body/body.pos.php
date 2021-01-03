@@ -21,7 +21,7 @@
                     {  
                         echo '
                          <div class="col-lg-3 col-md-6 col-sm-6 col-12" >
-                            <button onclick="func_addcart('.$row['id'].', '.$_SESSION["orderid"].');" type="button" class="btn btn-dark card card-statistic-1" style="height:90%;">
+                            <button onclick="func_addcart('.$row['id'].', '.$_SESSION["orderid"].')" type="button" class="btn btn-dark card card-statistic-1" style="height:90%;">
                                 <div class="card-icon bg-primary">
                                     <img src="'.$row['photo'].'" height="100px;" width="200px;">
                                 </div>
@@ -68,7 +68,7 @@
               <input type="number" class="form-control" id="qtyoforder" name="qtyoforder">    
             </div>
         </div>        
-        <button type="button" class="btn btn-success"  style="float:left">Add order</button>
+        <button type="submit" class="btn btn-success" onclick="funcAddOrderCart();" style="float:left">Add order</button>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
@@ -99,10 +99,33 @@
                       }
                       else
                       {
-                        alert("Record not found!");
+                        alert("something Wrong");
                       }
                   }
               });
                // $("#modalReloadDuration").modal();
+            }
+
+            function funcAddOrderCart()
+            {
+              debugger;
+              var orderid = document.getElementById("OrderID").value; 
+              var productid = document.getElementById("ProductID").value; 
+              var qty = document.getElementById("qtyoforder").value; 
+              //alert(qty);
+              $.ajax({
+                      type:"POST",
+                      url : "",
+                      data:{
+                        id = "addordercart",
+                        orderid : orderid,
+                        productid: productid,
+                        qty: qty
+                      },
+                      success: function(resp)
+                      {
+                        alert(resp);
+                      }
+              });
             }
         </script>

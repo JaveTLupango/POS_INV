@@ -84,6 +84,19 @@ else
 				echo "not enough credit";
 			}
 		}
+		else if ($id == "addordercart")
+		{
+			$_id1 = $_POST['orderid'];
+			$_id2 = $_POST['productid'];
+			$_id3 = $_POST['qty'];
+			$now = new DateTime();
+            $dt = $now->format('Y-m-d H:i:s');
+
+			$sql = "INSERT INTO orderdetails(orderid,productid,qty,tdt,stat,sold)
+					VALUES('$_id1','$_id2','$_id3', '$dt', '1', '1')";
+			$ret = $c_InsertControl->insertAll($conn, $sql);
+			echo $ret;	
+		}
 		else
 		{
 			echo "[]";
