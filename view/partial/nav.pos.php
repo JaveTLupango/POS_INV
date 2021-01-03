@@ -2,7 +2,7 @@
         <!-- Start app top navbar -->
         <nav class="navbar navbar-expand-lg main-navbar">
             <div class="container">
-                <a href="index.html" class="navbar-brand sidebar-gone-hide">CodiePie</a>
+                <a href="#" class="navbar-brand sidebar-gone-hide">Ken's POS</a>
                 <a href="#" class="nav-link sidebar-gone-show" data-toggle="sidebar"><i class="fas fa-bars"></i></a>
                 <ul class="navbar-nav navbar-right">                    
                     <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
