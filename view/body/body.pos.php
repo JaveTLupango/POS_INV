@@ -18,15 +18,16 @@
                   <div class="col-md-12" >
                     <div class="form-group">
                       <label for="usr">Total Amount:</label>
-                      <input type="text" class="form-control" id="usr">
+                      <input type="number" class="form-control" id="usr" value="0" disabled>
                     </div>
                   </div>
                   <div class="col-md-12" >
                     <div class="form-group">
                       <label for="usr">Receipt</label>
-                      <div class="border-style" style="    border-style: solid; height: 500px;"> 
-                         <img src="assets/img/avatar/avatar-1.png" height="100px;" width="180px;">
+                      <div id="ReceiptPrint" class="border-style" style="border-style: solid; height: 500px;"> 
+                         <center><img src="assets/img/avatar/avatar-1.png" height="100px;" width="180px;"></center>
                       </div>
+                      <button onclick="window.print()">Print this page</button>
                     </div>
                   </div>
                   </div>
@@ -144,6 +145,13 @@ function func_addcart(id, orderid) {
             $("#modalReloadDuration").modal("hide");
         }
     });
+  }
+
+  function funcPrint()
+  {
+    debugger;    
+    document.getElementById("ReceiptPrint").print();
+
   }
 
 </script>
