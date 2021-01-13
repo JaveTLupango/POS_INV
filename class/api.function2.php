@@ -100,7 +100,7 @@ else
 		else
 		{
 			echo "[]";
-		}		
+		}
 	}
 	else
 	{

@@ -21,7 +21,7 @@
                     {  
                         echo '
                          <div class="col-lg-3 col-md-6 col-sm-6 col-12" >
-                            <button onclick="func_addcart('.$row['id'].', '.$_SESSION["orderid"].')" type="button" class="btn btn-dark card card-statistic-1" style="height:90%;">
+                            <button onclick="func_addcart('.$row['id'].', '.$_SESSION["orderid"].');" type="button" class="btn btn-dark card card-statistic-1" style="height:90%;">
                                 <div class="card-icon bg-primary">
                                     <img src="'.$row['photo'].'" height="100px;" width="200px;">
                                 </div>
@@ -35,7 +35,7 @@
                                     </div>
                                 </div>
                             </button>
-                        </div>   
+                        </div>
                         ';
                     }
                      ?>
@@ -68,7 +68,7 @@
               <input type="number" class="form-control" id="qtyoforder" name="qtyoforder">    
             </div>
         </div>        
-        <button type="submit" class="btn btn-success" onclick="func_AddOrderCart()" style="float:left">Add order</button>
+        <button type="submit" class="btn btn-success" onclick="funcAddOrderCart()" style="float:left">Add order</button>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
@@ -76,56 +76,49 @@
     </div>
   </div>
 
-        <script type="text/javascript">
-            function func_addcart(id, orderid)
-            {
-              debugger;
-              $.ajax({
-                  type: "POST",
-                  url: "class/api.function.php",
-                  data:
-                  {
-                      id : 'GetProduct',
-                      data  : id
-                  },
-                  success: function(response)
-                  {
-                    var a_response = JSON.parse(response);
-                    if (response !="[]")
-                      {
-                        document.getElementById("ProductID").value = a_response[0].productid; 
-                        document.getElementById("OrderID").value =  orderid; 
-                        $("#modalReloadDuration").modal();
-                      }
-                      else
-                      {
-                        alert("something Wrong");
-                      }
-                  }
-              });
-               // $("#modalReloadDuration").modal();
-            }            
+<script type="text/javascript">
             
-            function func_AddOrderCart(id)
-            {
-              debugger;
-              var orderid = document.getElementById("OrderID").value; 
-              var productid = document.getElementById("ProductID").value; 
-              var qty = document.getElementById("qtyoforder").value; 
-              $.ajax({
-                      type:"POST",
-                      url : "class/api.function2.php",
-                      data:{
-                        id = "addordercart",
-                        data1 : orderid,
-                        data2: productid,
-                        data3: qty
-                      },
-                      success: function(resp)
-                      {
-                        alert(resp);
-                      }
-              });
-            }
+function func_addcart(id, orderid) {
+      $.ajax({
+          type: "POST",
+          url: "class/api.function.php",
+          data: {
+              id: 'GetProduct',
+              data: id
+          },
+          success: function(response)
+          {
+              var a_response = JSON.parse(response);
+              if (response != "[]") {
+                  document.getElementById("ProductID").value = a_response[0].productid;
+                  document.getElementById("OrderID").value = orderid;
+                  $("#modalReloadDuration").modal();
+              } else {
+                  alert("something Wrong");
+              }
+          }
+      });
+  }      
 
-            </script>
+  function funcAddOrderCart()
+  {
+    debugger
+    var orderid = document.getElementById("OrderID").value;
+    var productid = document.getElementById("ProductID").value;
+    var qty = document.getElementById("qtyoforder").value;
+   $.ajax({
+        type: "POST",
+        url: "class/api.function2.php",
+        data: {
+            id : "addordercart",
+            data1: orderid,
+            data2: productid,
+            data3: qty
+        },
+        success: function(resp) {
+            alert(resp);
+        }
+    });
+  }
+
+</script>
