@@ -21,38 +21,45 @@
                       <input type="text" class="form-control" id="usr">
                     </div>
                   </div>
+                  <div class="col-md-12" >
+                    <div class="form-group">
+                      <label for="usr">Receipt</label>
+                      <div class="border-style" style="    border-style: solid; height: 500px;"> 
+                         <img src="assets/img/avatar/avatar-1.png" height="100px;" width="180px;">
+                      </div>
+                    </div>
+                  </div>
                   </div>
                 </div>
                 <div class="col-lg-9">
-                <div class="col-md-12">
-                <div class="row">
-                <?php
-                     $SelectQuery = "SELECT * FROM product";
-                     $s_res = $c_Select->fn_SelectAll($conn, $SelectQuery);  
-                     while ($row = $s_res->fetch())
-                    {  
-                        echo '
-                         <div class="col-md-3 col-md-3 col-sm-3 col-12" >
-                            <button onclick="func_addcart('.$row['id'].', '.$_SESSION["orderid"].');" type="button" class="btn btn-dark card card-statistic-1" style="height:90%;">
-                                <div class="card-icon bg-primary">
-                                    <img src="'.$row['photo'].'" height="100px;" width="180px;">
-                                </div>
-                                <br/>
-                                <div class="card-wrap" style="float: right">
-                                    <div class="card-header">
-                                        <h4>'.$row['productname'].'</h4>
-                                    </div>
-                                    <div class="card-body" style="color: white">
-                                      P '.$row['price'].'
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
-                        ';
-                    }
-                     ?>
-                    </div>
-               
+                  <div class="col-md-12">
+                    <div class="row">
+                      <?php
+                          $SelectQuery = "SELECT * FROM product";
+                          $s_res = $c_Select->fn_SelectAll($conn, $SelectQuery);  
+                          while ($row = $s_res->fetch())
+                          {  
+                              echo '
+                              <div class="col-md-3 col-md-3 col-sm-3 col-12" >
+                                  <button onclick="func_addcart('.$row['id'].', '.$_SESSION["orderid"].');" type="button" class="btn btn-dark card card-statistic-1" style="height:90%;">
+                                      <div class="card-icon bg-primary">
+                                          <img src="'.$row['photo'].'" height="100px;" width="180px;">
+                                      </div>
+                                      <br/>
+                                      <div class="card-wrap" style="float: right">
+                                          <div class="card-header">
+                                              <h4>'.$row['productname'].'</h4>
+                                          </div>
+                                          <div class="card-body" style="color: white">
+                                            P '.$row['price'].'
+                                          </div>
+                                      </div>
+                                  </button>
+                              </div>
+                              ';
+                          }
+                          ?>
+                    </div>               
                   </div>
                 </div>
                     
