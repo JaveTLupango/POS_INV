@@ -117,6 +117,7 @@ function func_addcart(id, orderid) {
         },
         success: function(resp) {
             alert(resp);
+            $("#modalReloadDuration").modal("hide");
         }
     });
   }
