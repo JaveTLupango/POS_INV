@@ -12,18 +12,30 @@
                         </div>                
                     </div>  
                 </div>   
-
                 <div class="row">
-                     <?php
+                <div class="col-lg-3">
+                  <div class="row">
+                  <div class="col-md-12" >
+                    <div class="form-group">
+                      <label for="usr">Total Amount:</label>
+                      <input type="text" class="form-control" id="usr">
+                    </div>
+                  </div>
+                  </div>
+                </div>
+                <div class="col-lg-9">
+                <div class="col-md-12">
+                <div class="row">
+                <?php
                      $SelectQuery = "SELECT * FROM product";
                      $s_res = $c_Select->fn_SelectAll($conn, $SelectQuery);  
                      while ($row = $s_res->fetch())
                     {  
                         echo '
-                         <div class="col-lg-3 col-md-6 col-sm-6 col-12" >
+                         <div class="col-md-3 col-md-3 col-sm-3 col-12" >
                             <button onclick="func_addcart('.$row['id'].', '.$_SESSION["orderid"].');" type="button" class="btn btn-dark card card-statistic-1" style="height:90%;">
                                 <div class="card-icon bg-primary">
-                                    <img src="'.$row['photo'].'" height="100px;" width="200px;">
+                                    <img src="'.$row['photo'].'" height="100px;" width="180px;">
                                 </div>
                                 <br/>
                                 <div class="card-wrap" style="float: right">
@@ -39,6 +51,11 @@
                         ';
                     }
                      ?>
+                    </div>
+               
+                  </div>
+                </div>
+                    
                               
                 </div>
             </section>
