@@ -27,7 +27,8 @@
                       <div id="ReceiptPrint" class="border-style" style="border-style: solid; height: 500px;"> 
                          <center><img src="assets/img/avatar/avatar-1.png" height="100px;" width="180px;"></center>
                       </div>
-                      <button onclick="window.print()">Print this page</button>
+                      <button onclick="openWin()">Print Receipt</button>
+                      <button onclick="closeWin()">closeWin</button>
                     </div>
                   </div>
                   </div>
@@ -103,6 +104,7 @@
 
 <script type="text/javascript">
             
+var myWindow;
 function func_addcart(id, orderid) {
       $.ajax({
           type: "POST",
@@ -124,7 +126,12 @@ function func_addcart(id, orderid) {
           }
       });
   }      
-
+  function closeWin() {
+      myWindow.close();
+    }
+  function openWin() {
+      myWindow = window.open("receipt.php", "_blank", "width=400, height=800");
+    }
   function funcAddOrderCart()
   {
     debugger
