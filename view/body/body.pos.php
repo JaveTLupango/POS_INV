@@ -23,6 +23,12 @@
                   </div>
                   <div class="col-md-12" >
                     <div class="form-group">
+                      <label for="usr">Total Cash:</label>
+                      <input type="number" class="form-control" id="usr" value="0">
+                    </div>
+                  </div>
+                  <div class="col-md-12" >
+                    <div class="form-group">
                       <label for="usr">Receipt</label>
                       <div id="ReceiptPrint" class="border-style" style="border-style: solid; height: 500px;"> 
                          <center><img src="assets/img/avatar/avatar-1.png" height="100px;" width="180px;"></center>
