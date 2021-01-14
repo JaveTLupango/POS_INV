@@ -3,13 +3,25 @@
             <section class="section">
                 <div class="section-header">
                     <h1>Ken's POS System</h1> 
-                    <div class="row" >
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-12" style="float:right" >
-                            <button  type="button" class="btn btn-dark" style="float: right"> Clear Order</button>
-                        </div>     
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-12" style="float:right" >
-                            <button  type="button" class="btn btn-dark" style="float: right"> Proceed Order</button>
-                        </div>                
+                    
+                    <div class="col-lg-9">
+                      <div class="row" >
+                            <style type="text/css">
+                              .aaa {
+                                margin: 3%;
+                                float: right;
+                              }
+                            </style>
+                                <button  type="button" class="btn btn-dark col-lg-3 aaa" >
+                                 Proceed Order
+                                </button> 
+                                <button  type="button" class="btn btn-dark col-lg-3 aaa">
+                                 Get New Order ID
+                                </button>
+                                <button  type="button" onclick="ClearOrder(<?php echo $_SESSION["orderid"]; ?>)" class="btn btn-dark col-lg-3 aaa"> 
+                                Clear Order
+                              </button>
+                      </div>                                    
                     </div>  
                 </div>   
                 <div class="row">
@@ -85,7 +97,8 @@
 <script type="text/javascript">
             
 var myWindow;
-function func_addcart(id, orderid) {
+function func_addcart(id, orderid) 
+{
       $.ajax({
           type: "POST",
           url: "class/api.function.php",
@@ -105,7 +118,7 @@ function func_addcart(id, orderid) {
               }
           }
       });
-  }      
+}      
   function closeWin() {
       myWindow.close();
     }
@@ -139,6 +152,22 @@ function func_addcart(id, orderid) {
     debugger;    
     document.getElementById("ReceiptPrint").print();
 
+  }
+
+  function ClearOrder(id)
+  {
+    $.ajax({
+          type: "POST",
+          url: "class/api.function.php",
+          data: {
+              id: 'ClearOrder',
+              data: id
+          },
+          success: function(response)
+          {
+              alert(response);            
+          }
+      });
   }
 
 </script>

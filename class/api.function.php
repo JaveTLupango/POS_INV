@@ -45,6 +45,11 @@ else
 			$_id = $_POST['data'];
 			echo $c_Select->fn_SelectAll_RetJSON($conn, "SELECT productid, price FROM product WHERE id='$_id'");
 		}
+		else if ($id == "ClearOrder")
+		{
+			$_id = $_POST['data'];
+			echo $c_Del->deleteRecord($conn, "UPDATE orderdetails SET stat='0' WHERE orderid='$_id'");
+		}
 		else
 		{
 			echo "[]";
