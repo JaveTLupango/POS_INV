@@ -29,6 +29,7 @@
                   <div class="col-md-12">
                     <div class="row">
                       <?php
+                      
                           $SelectQuery = "SELECT * FROM product";
                           $s_res = $c_Select->fn_SelectAll($conn, $SelectQuery);  
                           while ($row = $s_res->fetch())

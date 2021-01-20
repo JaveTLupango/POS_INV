@@ -76,9 +76,9 @@ class Func_Controller
 	{
 		try
 		{
-			$sql = "Select orderid from orders WHERE status=1 AND sold=1";
+			$sql = "Select count(*) from orders WHERE status=1 AND sold=1";
 			$select_res = $select->fn_SelectAll($conn,$sql); //$conn->exec($sql); 
-			if(json_encode($select_res) =="[]")
+			if($select_res->fetchColumn() > 0)
 			{
 				$ret = $insert->insert_orderID($conn);	
 				return $ret;

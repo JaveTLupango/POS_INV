@@ -147,7 +147,7 @@ class Insert_Controller
 			$dttime = $now->format('Y-m-d H:i:s');
 			$id = round($dt).round($dt1).round($dt2).round(microtime(true));
 			$sql = "INSERT INTO orders(orderid, tdt,status,sold) 
-					VALUES('$id', '$dttime','1','1')";
+					VALUES('$id', '$dttime','0','0')";
 			$conn->exec($sql);
 			return $id;
 

@@ -30,7 +30,7 @@ include 'view/partial/head.pos.php';
             <div id="app">
                 <div class="main-wrapper container">
                     <div class="navbar-bg"></div>';
-
+            
             include 'view/partial/nav.pos.php';
             include 'view/body/body.pos2.php';
             include 'view/partial/footer.pos.php';
